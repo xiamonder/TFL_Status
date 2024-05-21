@@ -6,8 +6,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<AllLinesPage />} />
-        <Route path=":tubeLine" element={<SingleLinePage />} />
+        <Route path="/travel" element={<AllLinesPage />} />
+        <Route path="/travel/:tubeLine" element={<SingleLinePage />} />
       </Routes>
     </>
   );

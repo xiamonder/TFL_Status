@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ErrorType } from "../../utilities/types";
 
 type ErrorProps = {
@@ -7,9 +8,9 @@ type ErrorProps = {
 export const Error: React.FC<ErrorProps> = ({ error }) => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
-      <h1 className="mb-4 text-5xl font-bold">{error.httpStatusCode}</h1>
-      <h2 className="text-3xl font-semibold">{error.httpStatus}</h2>
-      <h3 className="text-xl font-semibold">{error.message}</h3>
+      <h1 className="mb-4 text-5xl font-bold">{`${error.httpStatusCode}: ${error.httpStatus}`}</h1>
+      <h2 className="text-xl font-semibold">{error.message}</h2>
+      <Link to={`/travel`}>Return</Link>
     </div>
   );
 };

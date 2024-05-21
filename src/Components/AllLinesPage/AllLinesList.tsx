@@ -5,6 +5,7 @@ import { Loading } from "../Utils/Loading";
 import { ErrorType, Line } from "../../utilities/types";
 import { Button } from "../Utils/Button";
 import { Error } from "../Utils/Error";
+import { formatDate } from "../../utilities/date_converter";
 
 export const AllLinesList = () => {
   const [lines, setLines] = useState<Line[]>([]);
@@ -14,22 +15,33 @@ export const AllLinesList = () => {
   const [resultRefresher, setResultRefresher] = useState(false);
 
   useEffect(() => {
+    document.title = "Underground Status";
     setIsLoading(true);
     getAllLinesStatus()
-      .then(({ data, headers }) => {
+      .then(({ data }) => {
         setLines(data);
-        setUpdatedTime(headers.date);
+        setUpdatedTime(formatDate(Date.now()));
         setIsLoading(false);
       })
-      .catch((err) => {
-        setError(err);
+      .catch(({ response }) => {
+        setError(
+          response
+            ? response.data
+            : {
+                httpStatusCode: 500,
+                httpStatus: "Unknown error",
+                message: "Please try refreshing the page",
+              }
+        );
         setIsLoading(false);
       });
   }, [resultRefresher]);
 
   return error ? (
     <Error error={error} />
-  ) : !isLoading ? (
+  ) : isLoading ? (
+    <Loading />
+  ) : (
     <>
       {updatedTime && <h3>Last Updated: {updatedTime}</h3>}
       <Button
@@ -37,7 +49,6 @@ export const AllLinesList = () => {
         handleClick={() => {
           setIsLoading(true);
           setResultRefresher((current) => {
-            console.log("click");
             return !current;
           });
         }}
@@ -50,7 +61,5 @@ export const AllLinesList = () => {
         ))}
       </ul>
     </>
-  ) : (
-    <Loading />
   );
 };

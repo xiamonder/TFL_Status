@@ -12,7 +12,7 @@ export const getAllLinesStatus = () => {
 };
 
 export const getLineStatus = (line: string) => {
-  return tflAPI.get(`${line}/Disruption`).then(({ data }) => {
+  return tflAPI.get(`${line}/Status`).then(({ data }) => {
     return data;
   });
 };
