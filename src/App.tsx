@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { AllLinesPage } from "./AllLinesPage/AllLinesPage";
-import { SingleLinePage } from "./SingleLinePage/SingleLinePage";
+import { AllLinesPage } from "./Components/AllLinesPage/AllLinesPage";
+import { SingleLinePage } from "./Components/SingleLinePage/SingleLinePage";
 
 function App() {
   return (

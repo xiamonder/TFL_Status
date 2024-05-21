@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getLineStatus } from "../api_utils";
+import { getLineStatus } from "../../utilities/api_utils";
 import { useParams } from "react-router-dom";
 
 type Params = { tubeLine: string };
