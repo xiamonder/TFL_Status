@@ -6,7 +6,7 @@ const tflAPI = axios.create({
 const apiKey = { params: { app_key: "9443aa7e430342bb93603da5191962ba" } };
 
 export const getAllLinesStatus = () => {
-  return tflAPI.get("Mode/tube/Status", apiKey).then(({ data }) => {
+  return tflAPI.get("Mode/tube/Status", apiKey).then(( data ) => {
     return data;
   });
 };
