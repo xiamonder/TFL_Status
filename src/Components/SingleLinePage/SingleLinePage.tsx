@@ -5,6 +5,7 @@ import { ErrorType, Line } from "../../utilities/types";
 import { Loading } from "../Utils/Loading";
 import { Error } from "../Utils/Error";
 import { SingleLineStatus } from "./SingleLineStatus";
+import { PageLayout } from "../Utils/PageLayout";
 
 type Params = { tubeLine: string };
 
@@ -29,21 +30,28 @@ export const SingleLinePage = () => {
                 httpStatusCode: 500,
                 httpStatus: "Unknown error",
                 message: "Please try refreshing the page",
-              }
+              },
         );
         setIsLoading(false);
         document.title = `${error?.httpStatusCode}: ${error?.httpStatus}`;
       });
   }, [error?.httpStatus, error?.httpStatusCode, tubeLine]);
 
-  return error ? (
-    <Error error={error} />
-  ) : isLoading ? (
-    <Loading />
-  ) : (
-    <>
-      {line ? <SingleLineStatus line={line} /> : <p>Line data not available</p>}
-      <Link to={`/travel`}>Return</Link>
-    </>
+  return (
+    <PageLayout>
+     { error ? (
+      <Error error={error} />
+      ) : isLoading ? (
+      <Loading />) : (
+      <>
+        {line ? (
+          <SingleLineStatus line={line} />
+        ) : (
+          <p>Line data not available</p>
+        )}
+        <Link to={`/travel`}>Return</Link>
+      </>
+      )}
+    </PageLayout>
   );
 };
