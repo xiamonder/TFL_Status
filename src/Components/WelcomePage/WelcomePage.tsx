@@ -7,15 +7,15 @@ export const WelcomePage = () => {
 
   return (
     <PageLayout>
-      <h1 className="mb-4 text-4xl font-bold">
+      <h1 className="text-3xl text-center font-bold">
         Welcome to the TFL Status Checker
       </h1>
       <img
         src={londonUndergroundLogo}
         alt="London Underground Logo"
-        className="my-6 h-60 w-60"
+        className="my-2 h-60 w-60"
       />
-      <h2 className="mb-4 text-xl font-bold">
+      <h2 className="mb-4 text-xl text-center font-bold">
         Stay up to date with the London Underground
       </h2>
       <LinkButton label={"View All Lines"} link={"/travel"} />
