@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import londonUndergroundLogo from "../../assets/underground_logo.png";
 import { PageLayout } from "../Utils/PageLayout";
+import { LinkButton } from "../Utils/LinkButton";
 
 document.title = '404: Page Not Found'
 export const ErrorPage = () => {
@@ -13,9 +13,7 @@ export const ErrorPage = () => {
       />
       <h1 className="mb-4 text-2xl font-bold">404</h1>
       <h2 className="mb-4 text-xl font-bold">Page not found!</h2>
-      <Link to="/travel" className="hover:text-green text-lg font-medium">
-        <h3>Return</h3>
-      </Link>
+      <LinkButton label = {'Return'} link = {'/travel'} />
     </PageLayout>
   );
 };

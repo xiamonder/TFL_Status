@@ -7,7 +7,7 @@ export const Button: React.FC<ButtonProps> = ({ label, handleClick }) => {
   return (
     <button
       className={
-        "rounded bg-slate-600 w-20 py-2 font-normal text-sm text-white shadow-md transition-shadow duration-200 ease-in-out hover:bg-slate-800 hover:shadow-lg"
+        "text rounded-md bg-blue-100 px-4 py-1 text-blue-700 shadow-md duration-200 ease-in-out hover:bg-blue-700 hover:text-blue-100"
       }
       onClick={handleClick}
     >
