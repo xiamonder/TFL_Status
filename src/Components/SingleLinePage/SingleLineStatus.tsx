@@ -1,4 +1,5 @@
 import { formatDate } from "../../utilities/date_converter";
+import { statusTagGenerator } from "../../utilities/statusTagGenerator";
 import { Line } from "../../utilities/types";
 
 type SingleLineStatusProps = {
@@ -8,18 +9,18 @@ type SingleLineStatusProps = {
 export const SingleLineStatus: React.FC<SingleLineStatusProps> = ({ line }) => {
   return (
     <>
-      <h1>{`${line.name} Line Status`}</h1>
-      <h2>{line.lineStatuses[0].statusSeverityDescription}</h2>
+      <h1 className="mb-4 text-3xl font-bold">{`${line.name} Line`}</h1>
+      {statusTagGenerator(line)}
       {!line.lineStatuses[0].reason ? (
         <>
-          <p>{`Last Updated: ${formatDate(line.created)}`}</p>
-          <p>{`There are currently no reported disruptions on the ${line.name} line`}</p>
+          <p className=" text-slate-600">{`Last Updated: ${formatDate(line.created)}`}</p>
+          <p>{`There are currently no reported disruptions on the ${line.name} line.`}</p>
         </>
       ) : (
-        <>
-          <p>{`Issue Last Updated: ${formatDate(line.lineStatuses[0].validityPeriods[0].fromDate)}`}</p>
+        <div className="flex max-w-screen-md flex-col items-center justify-center gap-5">
+          <p className="text-slate-600">{`Issue Last Updated: ${formatDate(line.lineStatuses[0].validityPeriods[0].fromDate)}`}</p>
           <p>{line.lineStatuses[0].reason}</p>
-        </>
+        </div>
       )}
     </>
   );
