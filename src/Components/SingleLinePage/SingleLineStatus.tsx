@@ -1,4 +1,4 @@
-import { formatDate } from "../../utilities/date_converter";
+import { formatDate } from "../../utilities/dateConverter";
 import { statusTagGenerator } from "../../utilities/statusTagGenerator";
 import { Line } from "../../utilities/types";
 
@@ -13,7 +13,7 @@ export const SingleLineStatus: React.FC<SingleLineStatusProps> = ({ line }) => {
       {statusTagGenerator(line)}
       {!line.lineStatuses[0].reason ? (
         <>
-          <p className=" text-slate-600">{`Last Updated: ${formatDate(line.created)}`}</p>
+          <p className=" text-slate-600">{`Last Updated: ${formatDate(Date.now())}`}</p>
           <p>{`There are currently no reported disruptions on the ${line.name} line.`}</p>
         </>
       ) : (
