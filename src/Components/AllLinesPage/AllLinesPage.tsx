@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PageLayout } from "../Utils/PageLayout";
 import { ErrorType, Line } from "../../utilities/types";
 import { getAllLinesStatus } from "../../utilities/api_utils";
-import { formatDate } from "../../utilities/date_converter";
+import { formatDate } from "../../utilities/dateConverter";
 import { Error } from "../Utils/Error";
 import { Loading } from "../Utils/Loading";
 import { Button } from "../Utils/Button";
